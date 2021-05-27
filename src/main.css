@@ -1,0 +1,99 @@
+body {
+  transition: opacity 300ms;
+  opacity: 0%;
+}
+
+body.fontLoaded {
+  opacity: 100%;
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body.fontLoadFailed {
+  opacity: 100%;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.children {
+  display: flex;
+}
+
+.spacer {
+  width: 100px;
+  background-color: green;
+}
+
+.edge {
+  display: flex;
+  align-items: center;
+}
+
+.child {
+  border: solid 1px;
+  margin: 4px;
+  padding: 4px;
+}
+
+.value {
+  color: #4cba38;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.value-header {
+  background-color: #72c850;
+  color: #e4f3ff;
+}
+
+.type {
+  color: #c4e1f7;
+  background-color: #15bdf4;
+}
+.leaf {
+  width: 200px;
+}
+
+.arrow-right {
+  width: 0;
+  height: 0;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+
+  border-left: 30px solid green;
+}
+
+.bobalice {
+  display: flex;
+}
+
+.alice {
+  flex: 1;
+  background-color: palegreen;
+}
+
+.bob {
+  flex: 1;
+  background-color: paleturquoise;
+}
+
+.name {
+  font-weight: 700;
+}
+
+.label {
+  font-weight: 700;
+}
+
+.error {
+  color: red;
+}
+
+form {
+  flex-direction: column;
+  display: flex;
+  width: 300px;
+  background-color: peachpuff;
+}
+
+form * {
+  width: 300px;
+}
