@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "dev": "yarn webpack serve --mode development"
+    "dev": "yarn webpack serve --mode development",
+    "build": "yarn webpack --mode production"
   },
   "devDependencies": {
     "@cennznet/types": "1.4.0",

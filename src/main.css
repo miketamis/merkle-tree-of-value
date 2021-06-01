@@ -118,6 +118,9 @@ form {
   flex-direction: column;
   display: flex;
   width: 300px;
+  border: 4px blue solid;
+  border-radius: 25px;
+  padding: 16px;
 }
 
 form * {

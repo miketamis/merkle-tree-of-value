@@ -5,7 +5,7 @@ import Simulator from "./Simulator";
 
 const COLLECTION_ID = 1;
 
-const CURRENT_VERSION = "0.0.4";
+const CURRENT_VERSION = "0.0.5";
 
 export default () => {
   const [api, setApi] = useState(undefined);
@@ -80,7 +80,7 @@ export default () => {
               return (
                 <div className="version">
                   <h3>Version: {version}</h3>
-                  <p> Changes: {changes}</p>
+                  <p> {changes}</p>
                   <br></br>
                   <button
                     onClick={() => {
@@ -105,19 +105,25 @@ export default () => {
           efficient at doing fungible and non-fungible tokens, as well as let
           you mix. This leads to a new category of token semi-fungible tokens,
           because with the Merkle tree of values you can make NFT behave like
-          FT.
+          FT. This leads to a whole new world of assests, that to some are
+          fungible but others non-fungible, think about how some real life
+          physical coins and stamps have more value to some.
         </p>
         <h2>But what is it?</h2>
         <p>
-          The Merkle tree of value, is like the name suggests a Merkle tree. The
+          The Merkle tree of value, is like the name suggests a Merkle Tree. The
           tree has three different types of leaf nodes Fungible, Non-Fungible,
           Numbered. A tree could have any number of these leaf nodes and mix and
-          match.
+          match, to create whatever assest you want.
         </p>
         <h3>Fungible Leaf - Fungible Token Example</h3>
         <p>
           A 100% FT would just have 1 leaf and that would be single Fungible
-          Token
+          Token. Theses demo have 1 slider, this is to demostrate a naive
+          transfer algorithms, you could of course implement whatever transfer
+          algorithms you would like, enabling you to transfer indivual tokens,
+          you could also shape your tree in particular ways to optimise movement
+          of particular sub-trees.
         </p>
         <Simulator
           bobLeafs={[
@@ -131,14 +137,14 @@ export default () => {
         />
         <h3>NFT Leaf - NFT Collection Example</h3>
         <p>
-          And a collection of NFTs would just be a bunch of Non-Fungible leafs.
-          But here’s the cool part, not only can you use the collection of NFTs
-          like there a fungible token, this is because each NFT has a value.
-          When we transfer like its a Fungible token we can optimise by take
-          whole sub trees of certain values and moving them over, the algorithms
-          used in this example is quite naive, but this will be an area of
-          research as different tokens will have different requirements about
-          how to transfer and shape their Merkle trees of value.
+          A collection of NFTs would just be a bunch of Non-Fungible leafs. But
+          here’s the cool part, not only can you use the collection of NFTs like
+          there a fungible token, this is because each NFT has a value. When we
+          transfer like its a Fungible token we can optimise by take whole sub
+          trees of certain values and moving them over, the algorithms used in
+          this example is quite naive, but this will be an area of research as
+          different tokens will have different requirements about how to
+          transfer and shape their Merkle trees of value.
         </p>
         <Simulator
           bobLeafs={[
@@ -196,7 +202,13 @@ export default () => {
         />
         <h3>Mix and Match - Anniversaries Coin Example</h3>
         you can use all of theses techniques work together, for example you
-        could have some anniversary edition coin for you FT NZD example
+        could have some anniversary edition coin for you FT. A real world
+        example of this is how there is special coins minted by the New Zealand
+        goverment, that are still legal tender, and will work in vending
+        machines, but are worth a lot more than their list value.
+        <a href="https://www.rbnz.govt.nz/notes-and-coins/coins/armistice-day-coin">
+          Armistice Day Coin
+        </a>
         <Simulator
           bobLeafs={[
             {
@@ -219,10 +231,12 @@ export default () => {
             },
           ]}
         />
-        <h3>Coffee Example</h3>
-        A great use of tokenisation is for price discovery, describe here
-        https://medium.com/affogato-network/cafe-dynamically-priced-coffee-fc1d0a5ec98d
-        However here there selling each batch indivually, imagine instead if we
+        <h3>Coffee Example</h3>A great use of tokenisation is for price
+        discovery,
+        <a href="https://medium.com/affogato-network/cafe-dynamically-priced-coffee-fc1d0a5ec98d">
+          CAFE — Dynamically Priced Coffee
+        </a>
+        However they are selling each batch indivually, imagine instead if we
         could continuious sell the tokens with the units representing the
         batches.
         <Simulator
@@ -272,6 +286,7 @@ function MakeYourOwn() {
       <h3>Make your own</h3>
       Here you can make your own, add your own leafs, mike and match, come up
       with your own new Assest.
+      <Simulator bobLeafs={bobsLeafs} />
       <form>
         <label>
           Node Type
@@ -316,7 +331,6 @@ function MakeYourOwn() {
           Add Leaf
         </button>
       </form>
-      <Simulator bobLeafs={bobsLeafs} />
     </>
   );
 }
