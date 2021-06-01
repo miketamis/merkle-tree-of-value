@@ -1,10 +1,84 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Api } from "@cennznet/api";
+
 import Simulator from "./Simulator";
 
+const COLLECTION_ID = 1;
+
+const CURRENT_VERSION = "0.0.2";
+
 export default () => {
+  const [api, setApi] = useState(undefined);
+  const [versions, setVersions] = useState([]);
+  useEffect(() => {
+    if (!api) {
+      const provider = "wss://cennznet.unfrastructure.io/public/ws";
+      Api.create({ provider }).then((_api: any) => {
+        setApi(_api);
+      });
+    }
+  }, []);
+
+  async function thing() {
+    if (!api) {
+      return;
+    }
+    const nextSeriesId = await api.query.nft.nextSeriesId(COLLECTION_ID);
+    const versionsPromise = [];
+    for (let i = 0; i < nextSeriesId; i++) {
+      versionsPromise.push(api.query.nft.seriesAttributes(COLLECTION_ID, i));
+    }
+    const _versions = await Promise.all(versionsPromise);
+    setVersions(_versions.map((version) => version.toJSON()));
+  }
+  useEffect(() => {
+    thing();
+  }, [api]);
+
+  function goToLink(url: string) {
+    window.location.href = url;
+
+    setTimeout(() => {
+      window.location.href = url.replace(
+        "ipfs://",
+        "https://gateway.pinata.cloud/ipfs/"
+      );
+    }, 100);
+  }
+
   return (
     <div>
       <h1> Merkle tree of value</h1>
+      <h2>{CURRENT_VERSION}</h2>
+      {!!versions.length &&
+        versions[versions.length - 1][0].Text !== CURRENT_VERSION && (
+          <button
+            onClick={() => goToLink(versions[versions.length - 1][1].Text)}
+            type="button"
+          >
+            Update
+          </button>
+        )}
+      <h2>Versions</h2>
+      {versions.map((vers) => {
+        const [{ Text: version }, { Text: url }] = vers;
+        const { Text: changes } = versions[3] || { Text: "First" };
+
+        return (
+          <div className="version">
+            <h3>Version: {version}</h3>
+            Changes: {changes}
+            <br></br>
+            <button
+              onClick={() => {
+                goToLink(url);
+              }}
+            >
+              open
+            </button>
+          </div>
+        );
+      })}
       <p>
         The Merkle Tree of Value is a new way to store token balances, it an
         efficient at doing fungible and non-fungible tokens, as well as let you

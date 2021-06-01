@@ -97,3 +97,9 @@ form {
 form * {
   width: 300px;
 }
+
+.version {
+  background-color: darkseagreen;
+  padding: 8px;
+  margin: 8px;
+}

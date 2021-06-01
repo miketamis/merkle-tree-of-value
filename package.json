@@ -1,5 +1,9 @@
 {
+  "scripts": {
+    "dev": "MODE=development  yarn webpack serve"
+  },
   "devDependencies": {
+    "@cennznet/types": "1.4.0",
     "@types/crypto-js": "^4.0.1",
     "@types/fontfaceobserver": "^0.0.6",
     "@types/react": "^17.0.8",
@@ -15,12 +19,17 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@cennznet/api": "1.4.0",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
     "crypto-js": "^4.0.0",
     "fontfaceobserver": "^2.1.0",
     "html-webpack-plugin": "^5.3.1",
     "js-sha256": "^0.9.0",
     "prettier": "^2.3.0",
+    "process": "^0.11.10",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "stream-browserify": "^3.0.0"
   }
 }
