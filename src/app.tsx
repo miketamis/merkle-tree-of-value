@@ -38,12 +38,15 @@ export default () => {
   function goToLink(url: string) {
     window.location.href = url;
 
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       window.location.href = url.replace(
         "ipfs://",
         "https://gateway.pinata.cloud/ipfs/"
       );
-    }, 100);
+    }, 300);
+    window.onblur = function () {
+      clearTimeout(timeout);
+    };
   }
 
   return (
