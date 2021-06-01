@@ -249,13 +249,13 @@ export default () => {
             },
             {
               type: "fungible",
-              serialNumber: 101,
+              serialNumber: 2,
               value: 100,
               name: "Batch 2, Febuary",
             },
             {
               type: "fungible",
-              serialNumber: 201,
+              serialNumber: 3,
               value: 100,
               name: "Batch 3, March",
             },
