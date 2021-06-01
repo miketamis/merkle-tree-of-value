@@ -5,7 +5,7 @@ import Simulator from "./Simulator";
 
 const COLLECTION_ID = 1;
 
-const CURRENT_VERSION = "0.0.2";
+const CURRENT_VERSION = "0.0.3";
 
 export default () => {
   const [api, setApi] = useState(undefined);
@@ -56,7 +56,7 @@ export default () => {
       {!!versions.length &&
         versions[versions.length - 1][0].Text !== CURRENT_VERSION && (
           <button
-            onClick={() => goToLink(versions[versions.length - 1][1].Text)}
+            onClick={() => goToLink(versions[versions.length - 1][1].Url)}
             type="button"
           >
             Update
@@ -64,9 +64,9 @@ export default () => {
         )}
       <h2>Versions</h2>
       {versions.map((vers) => {
-        const [{ Text: version }, { Text: url }] = vers;
-        const { Text: changes } = versions[3] || { Text: "First" };
-
+        const version = vers[0].Text;
+        const url = vers[1].Url || vers[1].Text;
+        const changes = vers[2] ? vers[2].Text : "First";
         return (
           <div className="version">
             <h3>Version: {version}</h3>
