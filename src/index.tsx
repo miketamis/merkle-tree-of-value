@@ -7,9 +7,8 @@ import "./main.css";
 
 import App from "./app";
 
-// Observe loading of Inter (to remove 'Inter', remove the <link> tag in
-// the index.html file and this observer)
-const openSansObserver = new FontFaceObserver("Inter", {});
+const MontserratObserver = new FontFaceObserver("Montserrat", {});
+const openSansObserver = new FontFaceObserver("Open Sans", {});
 
 // When Inter is loaded, add a font-family using Inter to the body
 
@@ -26,7 +25,10 @@ function promiseTimeout<T>(ms: number, promise: Promise<T>): Promise<T> {
   return Promise.race([promise, timeout]) as Promise<T>;
 }
 
-promiseTimeout(1000, openSansObserver.load())
+promiseTimeout(
+  1000,
+  Promise.all([MontserratObserver.load(), openSansObserver.load()])
+)
   .then(() => {
     document.body.classList.add("fontLoaded");
   })

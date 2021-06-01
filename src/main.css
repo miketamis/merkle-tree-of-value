@@ -1,11 +1,21 @@
 body {
   transition: opacity 300ms;
   opacity: 0%;
+  margin: 16px;
 }
 
 body.fontLoaded {
   opacity: 100%;
-  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body.fontLoaded h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 body.fontLoadFailed {
@@ -18,8 +28,10 @@ body.fontLoadFailed {
 }
 
 .spacer {
-  width: 100px;
-  background-color: green;
+  width: 150px;
+  background-color: #d4ef86;
+  border-radius: 25px;
+  padding: 8px;
 }
 
 .edge {
@@ -28,20 +40,16 @@ body.fontLoadFailed {
 }
 
 .child {
-  border: solid 1px;
   margin: 4px;
   padding: 4px;
 }
 
-.value {
-  color: #4cba38;
+.value-header {
+  background-color: #d4ef86;
+  color: #111111;
   font-weight: 600;
   font-size: 18px;
-}
-
-.value-header {
-  background-color: #72c850;
-  color: #e4f3ff;
+  border-radius: 4px;
 }
 
 .type {
@@ -50,6 +58,17 @@ body.fontLoadFailed {
 }
 .leaf {
   width: 200px;
+  border: 4px #e80371 solid;
+  border-radius: 25px;
+  padding: 8px;
+}
+
+.leaf.numbered {
+  border: 4px #1130ff solid;
+}
+
+.leaf.nft {
+  border: 4px #111111 solid;
 }
 
 .arrow-right {
@@ -58,7 +77,7 @@ body.fontLoadFailed {
   border-top: 30px solid transparent;
   border-bottom: 30px solid transparent;
 
-  border-left: 30px solid green;
+  border-left: 30px solid #d4ef86;
 }
 
 .bobalice {
@@ -67,12 +86,20 @@ body.fontLoadFailed {
 
 .alice {
   flex: 1;
-  background-color: palegreen;
+  border: 4px #869def solid;
+  border-radius: 25px;
+  padding: 16px;
+  margin: 16px;
+  padding-top: 1px;
 }
 
 .bob {
   flex: 1;
-  background-color: paleturquoise;
+  border: 4px #e80371 solid;
+  border-radius: 25px;
+  padding: 16px;
+  margin: 16px;
+  padding-top: 1px;
 }
 
 .name {
@@ -91,7 +118,6 @@ form {
   flex-direction: column;
   display: flex;
   width: 300px;
-  background-color: peachpuff;
 }
 
 form * {
@@ -99,7 +125,42 @@ form * {
 }
 
 .version {
-  background-color: darkseagreen;
   padding: 8px;
   margin: 8px;
+  border-radius: 25px;
+  border: 4px blue solid;
+}
+
+button {
+  font-family: "Open Sans", Sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 21px;
+  background-color: #1130ff;
+  border-radius: 1000px;
+  padding: 14px 30px 14px 30px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button.secondary {
+  background-color: transparent;
+  color: #1130ff;
+  border: 2px #1130ff solid;
+}
+
+.header {
+  background-color: #111111;
+  border-radius: 25px;
+  color: white;
+  padding: 25px;
+  padding-top: 1px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.content {
+  max-width: 800px;
+  margin: auto;
 }

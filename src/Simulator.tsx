@@ -167,9 +167,8 @@ function Node({ node }: { node: Leaf | Node | null }) {
       <div>
         <div className="children">
           <div className="spacer">
-            <div className="value-header">Value</div>
-            <div className="value">{node.value}</div>
-            <div className="type">{node.type}</div>
+            Node
+            <div className="value-header">Value {node.value}</div>
             <div className="hash">{node.hash}</div>
           </div>
           <div>
@@ -192,11 +191,13 @@ function Node({ node }: { node: Leaf | Node | null }) {
     );
   }
   return (
-    <div className="leaf">
+    <div className={`leaf ${node.type}`}>
       <div className="name">{node.name}</div>
-      <div className="value-header">Value</div>
-      <div className="value">{node.value}</div>
-      <div className="type">{node.type}</div>
+      {node.type}
+
+      <div className="value-header">Value {node.value}</div>
+      <div className="hash">{node.hash}</div>
+
       {
         <div>
           {" "}
@@ -209,7 +210,6 @@ function Node({ node }: { node: Leaf | Node | null }) {
           )}
         </div>
       }
-      <div className="hash">{node.hash}</div>
     </div>
   );
 }
